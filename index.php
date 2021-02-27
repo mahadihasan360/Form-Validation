@@ -26,6 +26,12 @@ $cell = $_POST["cell"] . "<br>";
 $uname = $_POST["uname"] . "<br>";
 
 
+// Email check
+ $email_arr = (explode("@", $_POST["email"]));
+ $inst_mail = end($email_arr);
+
+
+
 // fill require
 if(empty($_POST["name"])){
 $error["name"] = "<p style='color:red'>*Required</p>";
@@ -48,12 +54,18 @@ if(empty($_POST["name"]) or empty($_POST["email"]) or empty($_POST["cell"]) or e
 
 	$msg = "<p class='alert alert-danger'>All fields are required <button class='close'; data-dismiss='alert'>&times;</button> <p>";
 
-}else if(filter_var($email, FILTER_VALIDATE_EMAIL) == false){
+}else if(filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) == false){
 
 $msg = "<p class='alert alert-warning'>Invalid Email Address <button class='close'; data-dismiss='alert'>&times;</button> <p>";
 
+}else if($inst_mail != "coderstrustbd.com"){
+
+	$msg = "<p class='alert alert-danger'>Should Be Our Institute Email <button class='close'; data-dismiss='alert'>&times;</button> <p>";
+
 }else{
+
 $msg = "<p class='alert alert-success' style='color:green'>Successfully SignUp <button class='close'; data-dismiss='alert'>&times;</button> <p>";
+
 }
 
 
