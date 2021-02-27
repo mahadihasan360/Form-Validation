@@ -58,10 +58,6 @@ $msg = "<p class='alert alert-success' style='color:green'>Successfully SignUp <
 
 
 }
-
-
-
-
 ?>
 
 	
